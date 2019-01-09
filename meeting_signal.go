@@ -6,6 +6,7 @@ import (
 	"os/exec"
 	"html/template"
 	"net/http"
+	"os"
 	"strings"
 )
 
@@ -14,8 +15,9 @@ type MeetingSignalData struct {
 }
 
 func main() {
-	tmpl := template.Must(template.ParseFiles("meeting_signal.html"))
-	
+	cwd, _ := os.Getwd()
+	tmpl := template.Must(template.ParseFiles(filepath.Join(cwd, "meeting_signal.html")))
+
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		formErr := r.ParseForm()
     if formErr != nil {
