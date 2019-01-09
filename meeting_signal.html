@@ -26,7 +26,7 @@
             <h1>Light is {{if .LightStatus}} ON {{else}} OFF {{end}}</h1>
 
             <p>Turn the light {{if .LightStatus}}on{{else}}off{{end}}?</p>
-            
+
             <form method="post" action="/">
               <input type="hidden" name="switch" value="{{if .LightStatus}}off{{else}}on{{end}}">
               {{if .LightStatus}}
